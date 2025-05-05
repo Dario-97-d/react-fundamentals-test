@@ -1,0 +1,40 @@
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #333;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+nav a:active {
+  color: #bbb;
+}
+
+@media (prefers-color-scheme: light) {
+  nav {
+    background-color: #f1f1f1;
+    color: #333;
+  }
+
+  nav a {
+    color: #005f99;
+  }
+
+  nav a:hover {
+    color: #007bff;
+  }
+
+  nav a:active {
+    color: #004080;
+  }
+}

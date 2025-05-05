@@ -1,0 +1,13 @@
+.layout-container {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+}
+
+footer {
+  margin-bottom: 2rem;
+}
