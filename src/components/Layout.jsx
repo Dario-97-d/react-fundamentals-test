@@ -16,7 +16,7 @@ export default function Layout()
       </main>
 
       <footer>
-        <NavLink to={-1}>Voltar</NavLink>
+        <NavLink to={-1}>Back</NavLink>
       </footer>
     </div>
   )

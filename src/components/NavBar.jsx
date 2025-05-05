@@ -5,8 +5,8 @@ export default function NavBar()
 {
   return (
     <nav className={styles.nav}>
-      <NavLink to="/tasks">Todas as Tarefas</NavLink>
-      <NavLink to="/tasks/new">Nova Tarefa</NavLink>
+      <NavLink to="/tasks">All Tasks</NavLink>
+      <NavLink to="/tasks/new">New Task</NavLink>
     </nav>
   )
 }

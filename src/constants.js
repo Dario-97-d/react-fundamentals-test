@@ -10,7 +10,7 @@ export const emptyTask = () => {
 }
 
 export const priorityClasses = {
-  baixa: 'priorityLow',
-  media: 'priorityMedium',
-  alta: 'priorityHigh',
+  low: 'priorityLow',
+  medium: 'priorityMedium',
+  high: 'priorityHigh',
 }

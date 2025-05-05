@@ -15,12 +15,12 @@ export default function TasksPage()
     axios
       .get(`${API_URL}/tasks`)
       .then(response => setTasks(response.data))
-      .catch(() => setMessage('Não foi possível carregar as tarefas.'))
+      .catch(() => setMessage('Could not load tasks.'))
   }, [])
 
   return (<>
   
-    <h1>Todas as Tarefas</h1>
+    <h1>All Tasks</h1>
 
     <div className="main-container">
       {message && <p>{message}</p>}
@@ -28,9 +28,9 @@ export default function TasksPage()
       {tasks.length > 0 &&
         <div className={styles.grid}>
           <div className={styles.gridRowHeader}>
-              <div>Título</div>
-              <div>Prioridade</div>
-              <div>Feita</div>
+              <div>Title</div>
+              <div>Priority</div>
+              <div>Done</div>
           </div>
 
           {tasks.map(t => (

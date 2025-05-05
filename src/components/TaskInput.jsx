@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom'
 import styles from './TaskInput.module.css'
 
 const bgPriorityClasses = {
-  baixa: styles.bgPriorityLow,
-  media: styles.bgPriorityMedium,
-  alta: styles.bgPriorityHigh,
+  low: styles.bgPriorityLow,
+  medium: styles.bgPriorityMedium,
+  high: styles.bgPriorityHigh,
 }
 
 export default function TaskInput({ mode, initialValues, onSubmit })
@@ -39,7 +39,7 @@ export default function TaskInput({ mode, initialValues, onSubmit })
       <form onSubmit={handleSubmit} className={styles.form}>
         
         <div className={styles.formGroup}>
-          <label htmlFor="title" className={styles.label}>Título</label>
+          <label htmlFor="title" className={styles.label}>Title</label>
           
           <input
             type="text"
@@ -53,7 +53,7 @@ export default function TaskInput({ mode, initialValues, onSubmit })
         </div>
         
         <div className={styles.formGroup}>
-          <label htmlFor="description" className={styles.label}>Descrição</label>
+          <label htmlFor="description" className={styles.label}>Description</label>
           
           <textarea
             id="description"
@@ -65,7 +65,7 @@ export default function TaskInput({ mode, initialValues, onSubmit })
         </div>
         
         <div className={styles.formGroup}>
-          <label htmlFor="priority" className={`${styles.label}`}>Prioridade</label>
+          <label htmlFor="priority" className={`${styles.label}`}>Priority</label>
           
           <select
             id="priority"
@@ -74,10 +74,10 @@ export default function TaskInput({ mode, initialValues, onSubmit })
             onChange={handleChange}
             className={`${styles.select} ${bgPriorityClasses[task.priority]}`}
           >
-            <option value="">Selecione a prioridade</option>
-            <option value="baixa" className={task.priority || "priorityLow"}>Baixa</option>
-            <option value="media" className={task.priority || "priorityMedium"}>Média</option>
-            <option value="alta" className={task.priority || "priorityHigh"}>Alta</option>
+            <option value="">Select priority</option>
+            <option value="low" className={task.priority || "priorityLow"}>Low</option>
+            <option value="medium" className={task.priority || "priorityMedium"}>Medium</option>
+            <option value="high" className={task.priority || "priorityHigh"}>High</option>
           </select>
         </div>
         
@@ -91,15 +91,15 @@ export default function TaskInput({ mode, initialValues, onSubmit })
               onChange={handleChange}
               className={styles.checkbox}
             />
-            Feita
+            Done
           </label>
         </div>
 
         <div className={styles.actions}>
-          {submittedTaskId && <NavLink to={`/tasks/${submittedTaskId}`}>Ver tarefa {mode === 'create' ? 'criada' : 'editada'}</NavLink>}
+          {submittedTaskId && <NavLink to={`/tasks/${submittedTaskId}`}>View {mode === 'create' ? 'created' : 'edited'} task</NavLink>}
 
           <button type="submit" className={`${mode} ${styles[mode]}`}>
-            {mode === 'create' ? 'Criar' : 'Editar'}
+            {mode === 'create' ? 'Add' : 'Update'}
           </button>
         </div>
       </form>

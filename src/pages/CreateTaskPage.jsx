@@ -12,15 +12,15 @@ export default function CreateTaskPage()
     return axios
       .post(`${API_URL}/tasks`, task)
       .then((response) => {
-        setMessage('Tarefa criada!')
+        setMessage('The task has been created!')
         return response.data.id
       })
-      .catch(() => setMessage('Não foi possível registar a tarefa.'))
+      .catch(() => setMessage('Could not create task.'))
   }
 
   return (<>
 
-    <h1>Nova Tarefa</h1>
+    <h1>New Task</h1>
 
     {message.length > 0 && <span>{message}</span>}
     

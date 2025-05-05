@@ -18,7 +18,7 @@ export default function TaskPage()
     axios
       .get(`${API_URL}/tasks/${taskId}`)
       .then(response => setTask(response.data))
-      .catch(() => setMessage('Não foi possível carregar a tarefa.'))
+      .catch(() => setMessage('Could not load task.'))
     
   }, [taskId])
 
@@ -27,16 +27,16 @@ export default function TaskPage()
     axios
       .patch(`${API_URL}/tasks/${taskId}`, { done: !task.done })
       .then(response => setTask(response.data))
-      .catch(() => setMessage(`Não foi possível marcar a tarefa como: ${task.done ? 'por fazer' : 'feita'}.`))
+      .catch(() => setMessage(`Could not mark task as: ${task.done ? '"to be done"' : '"done"'}.`))
   }
 
   // Delete and Navigate.
   const handleDelete = () => {
-    if (window.confirm('Apagar tarefa?')) {
+    if (window.confirm('Delete task?')) {
       axios
         .delete(`${API_URL}/tasks/${taskId}`)
         .then(() => navigate('/tasks'))
-        .catch(() => setMessage('Não foi possível apagar a tarefa.'))
+        .catch(() => setMessage('Could not delete task.'))
     }
   }  
 
@@ -51,33 +51,33 @@ export default function TaskPage()
       {task.title.length > 0 &&
         <>
           <span className={`${styles.priority} ${priorityClasses[task.priority]}`}>
-            Prioridade: {task.priority}
+            Priority: {task.priority}
           </span>
 
           <p className={styles.description}>{task.description}</p>
 
           {task.done ?
-            <p className={styles.doneTrue}>✅ Feita</p>
+            <p className={styles.doneTrue}>✅ Done</p>
             :
-            <p className={styles.doneFalse}>⭕ Por fazer</p>
+            <p className={styles.doneFalse}>⭕ To be done</p>
           }
 
           <div className={styles.toggleDoneContainer}>
-            <span>Marcar como:</span>
+            <span>Mark as:</span>
             
             <button
               className={task.done ? styles.setNotDone : styles.setDone}
               onClick={toggleDone}
               aria-pressed={task.done}
             >
-              {task.done ? '⭕ Por fazer' : '✅ Feita'}
+              {task.done ? '⭕ To be done' : '✅ Done'}
             </button>
           </div>
           
           <div className={styles.actions}>
-            <button className="delete" onClick={handleDelete}>Apagar</button>
+            <button className="delete" onClick={handleDelete}>Delete</button>
 
-            <NavLink to={`/tasks/${task.id}/edit`}>Editar tarefa</NavLink>
+            <NavLink to={`/tasks/${task.id}/edit`}>Edit task</NavLink>
           </div>
         </>
       }

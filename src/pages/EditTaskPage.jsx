@@ -16,7 +16,7 @@ export default function EditTaskPage()
     axios
       .get(`${API_URL}/tasks/${taskId}`)
       .then(response => setTask(response.data))
-      .catch(() => setMessage('Não foi possível carregar a tarefa.'))
+      .catch(() => setMessage('Could not load task.'))
   }, [taskId])
 
   // Submit edited Task.
@@ -24,15 +24,15 @@ export default function EditTaskPage()
     return axios
       .put(`${API_URL}/tasks/${taskId}`, task)
       .then((response) => {
-        setMessage('Tarefa atualizada!')
+        setMessage('The task has been updated!')
         return response.data.id
       })
-      .catch(() => setMessage('Não foi possível atualizar a tarefa.'))
+      .catch(() => setMessage('Could not update task.'))
   }
 
   return (<>
 
-    <h1>Alterar Tarefa</h1>
+    <h1>Edit Task</h1>
 
     {message.length > 0 && <span>{message}</span>}
     
