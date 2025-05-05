@@ -1,0 +1,61 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.priority {
+  font-weight: bold;
+}
+
+.description {
+  font-size: 1.25rem;
+  color: #ccc;
+}
+
+.doneTrue {
+  color: #3fbf5f;
+}
+
+.doneFalse {
+  color: #bf3f5f;
+}
+
+.toggleDoneContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.setDone {
+  background-color: rgba(127,255,127,0.25);
+}
+
+.setNotDone {
+  background-color: rgba(255,127,127,0.25);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .description {
+    color: #333;
+  }
+
+  .doneTrue {
+    color: #2e7d32;
+  }
+
+  .doneFalse {
+    color: #c62828;
+  }
+
+  .setDone ,
+  .setNotDone {
+    color: #333;
+  }
+}
