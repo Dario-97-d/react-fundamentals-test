@@ -2,8 +2,6 @@
 
 A single-page app for task management built with React + Vite. It allows users to list, create, edit, delete, and mark tasks as completed. The app communicates with a REST API backend and is built using modern React patterns with reusable components and clean state management.
 
-The interface is entirely in Portuguese (PT), while the codebase and documentation are in English.
-
 ---
 
 ## ✨ Features
@@ -76,16 +74,16 @@ Here’s a sample db.json file to get you started:
   "tasks": [
     {
       "id": 1,
-      "title": "Estudar React",
-      "description": "Revisão de hooks",
-      "priority": "alta",
+      "title": "Study React",
+      "description": "Review React hooks",
+      "priority": "medium",
       "done": true
     },
     {
       "id": 2,
-      "title": "Acabar o Projeto",
-      "description": "Acabar o projeto final do curso",
-      "priority": "alta",
+      "title": "Finish the Project",
+      "description": "Finish the final course project",
+      "priority": "high",
       "done": false
     }
   ]
@@ -119,18 +117,35 @@ The server will now be running at: [http://localhost:3001](http://localhost:3001
 
 ## 📸 Screenshots
 
-| Task List | New Task |
-|-----------|----------|
-| ![](./public/screenshot-list.png) | ![](./public/screenshot-form.png) |
+### Listing all tasks
 
----
+![All Tasks](./app-screenshots/all-tasks.png)
 
-## 📌 Notes
+### Viewing task and marking it as done
 
-- Interface language: Portuguese (PT)  
-- No environment variables required at this stage  
-- Architecture designed for future expansion (e.g. subtasks)  
-- Easily switch between local or remote API endpoints in the constants.js file
+![Task View](./app-screenshots/task-mark-done.png)
+
+### Task is marked as done ✅
+
+![Task Done](./app-screenshots/task-marked-done.png)
+
+### Editing task
+
+![Edit Task](./app-screenshots/edit-task.png)
+
+### The task has been edited!
+
+A link to view the task is given beside the submit button.
+
+![Edit Task](./app-screenshots/edited-task.png)
+
+### Creating task
+
+![Create Task](./app-screenshots/create-task.png)
+
+### The task has been created!
+
+![Created Task](./app-screenshots/created-task.png)
 
 ---
 
