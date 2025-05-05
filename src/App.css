@@ -6,6 +6,35 @@
   text-align: center;
 }
 
+.main-container {
+  margin: 1rem auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+.priorityHigh {
+  color: mediumvioletred;
+}
+
+.priorityMedium {
+  color: darkgoldenrod;
+}
+
+.priorityLow {
+  color: darkcyan;
+}
+
+@media (prefers-color-scheme: light) {
+  .main-container {
+    background-color: #f9f9f9;
+    color: #333;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+}
+
 @media (max-width: 34rem) {
   #root {
     max-width: 32rem;

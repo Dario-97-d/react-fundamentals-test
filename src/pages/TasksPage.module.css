@@ -1,0 +1,49 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  color: #ccc;
+  font-weight: bold;
+}
+
+.grid a:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.gridRow,
+.gridRowHeader {
+  display: grid;
+  grid-column: 1 / 4;
+  grid-template-columns: subgrid;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.gridRow div {
+  padding: 0.5rem;
+}
+
+.gridRowHeader:nth-child(1) {
+  text-align: left;
+}
+.gridRowHeader div {
+  padding: 0.5rem 1rem;
+}
+
+.title {
+  color: lightblue;
+  text-align: left;
+}
+
+@media (prefers-color-scheme: light) {
+  .grid {
+    color: #333;
+  }
+
+  .gridRowHeader,
+  .gridRow {
+    border-bottom: 1px solid #ccc;
+  }
+
+  .title {
+    color: #005f99;
+  }
+}
