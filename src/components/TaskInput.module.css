@@ -1,0 +1,102 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.label {
+  font-weight: 600;
+}
+
+.input,
+.textarea,
+.select {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #66aaff;
+  outline: none;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.bgPriorityHigh {
+  background-color: mediumvioletred;
+}
+.bgPriorityMedium {
+  background-color: darkgoldenrod;
+}
+.bgPriorityLow {
+  background-color: darkcyan;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxLabel {
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+}
+
+.checkbox {
+  transform: scale(1.2);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+
+@media (prefers-color-scheme: light) {
+  .input,
+  .textarea,
+  .select {
+    background-color: #fff;
+    border-color: #ccc;
+    color: #000;
+  }
+
+  .input:focus,
+  .textarea:focus,
+  .select:focus {
+    border-color: #007bff;
+  }
+
+  .bgPriorityHigh {
+    background-color: mediumvioletred;
+    color: white;
+  }
+  .bgPriorityMedium {
+    background-color: darkgoldenrod;
+    color: white;
+  }
+  .bgPriorityLow {
+    background-color: darkcyan;
+    color: white;
+  }
+}
