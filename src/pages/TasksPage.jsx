@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { API_URL, priorityClasses } from '../constants'
-import axios from 'axios'
+import { api, priorityClasses } from '../constants'
 import styles from './TasksPage.module.css'
 
 export default function TasksPage()
 {
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('Loading tasks...')
   const [tasks, setTasks] = useState([])
 
   // Load Tasks.
   useEffect(() => {
-    setMessage('')
-    axios
-      .get(`${API_URL}/tasks`)
-      .then(response => setTasks(response.data))
+    api
+      .getTasks()
+      .then(response => {
+        setMessage('')
+        setTasks(response.data)
+      })
       .catch(() => setMessage('Could not load tasks.'))
   }, [])
 
@@ -22,9 +23,9 @@ export default function TasksPage()
   
     <h1>All Tasks</h1>
 
-    <div className="main-container">
-      {message && <p>{message}</p>}
+    {message && <p>{message}</p>}
 
+    <div className="main-container">
       {tasks.length > 0 &&
         <div className={styles.grid}>
           <div className={styles.gridRowHeader}>
@@ -34,7 +35,7 @@ export default function TasksPage()
           </div>
 
           {tasks.map(t => (
-            <NavLink key={t.id} to={`/tasks/${t.id}`} className={styles.gridRow}>
+            <NavLink key={t._id} to={`/tasks/${t._id}`} className={styles.gridRow}>
               
               <div className={styles.title}>
                 {t.title}

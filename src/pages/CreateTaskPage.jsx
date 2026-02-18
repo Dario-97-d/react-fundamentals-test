@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { API_URL, emptyTask } from '../constants';
-import axios from 'axios';
+import { api, emptyTask } from '../constants';
 import TaskInput from '../components/TaskInput';
 
 export default function CreateTaskPage()
@@ -9,11 +8,12 @@ export default function CreateTaskPage()
 
   // Submit new Task.
   const onSubmit = (task) => {
-    return axios
-      .post(`${API_URL}/tasks`, task)
+    setMessage('Creating task...')
+    return api
+      .createTask(task)
       .then((response) => {
         setMessage('The task has been created!')
-        return response.data.id
+        return response.data._id
       })
       .catch(() => setMessage('Could not create task.'))
   }

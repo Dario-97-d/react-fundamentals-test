@@ -1,40 +1,48 @@
 import { useEffect, useState } from 'react'
 import { NavLink, useNavigate, useParams } from 'react-router-dom'
-import { API_URL, emptyTask, priorityClasses } from '../constants'
-import axios from 'axios'
+import { api, emptyTask, priorityClasses } from '../constants'
 import styles from './TaskPage.module.css'
 
 export default function TaskPage()
 {
   const { taskId } = useParams()
 
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('Loading task...')
   const [task, setTask] = useState(emptyTask())
 
   const navigate = useNavigate()
 
   // Load Task.
   useEffect(() => {
-    axios
-      .get(`${API_URL}/tasks/${taskId}`)
-      .then(response => setTask(response.data))
+    api
+      .getTask(taskId)
+      .then(response => {
+        setMessage('')
+        setTask(response.data)
+      })
       .catch(() => setMessage('Could not load task.'))
     
   }, [taskId])
 
   // Toggle task.done.
   const toggleDone = () => {
-    axios
-      .patch(`${API_URL}/tasks/${taskId}`, { done: !task.done })
-      .then(response => setTask(response.data))
-      .catch(() => setMessage(`Could not mark task as: ${task.done ? '"to be done"' : '"done"'}.`))
+    const taskDoneLabel = task.done ? '"to be done"' : '"done"';
+    setMessage(`Setting task as: ${taskDoneLabel}`)
+    api
+      .setTaskDone(taskId, !task.done)
+      .then(response => {
+        setMessage(`Task set as: ${taskDoneLabel}`)
+        setTask(response.data)
+      })
+      .catch(() => setMessage(`Could not mark task as: ${taskDoneLabel}.`))
   }
 
   // Delete and Navigate.
   const handleDelete = () => {
     if (window.confirm('Delete task?')) {
-      axios
-        .delete(`${API_URL}/tasks/${taskId}`)
+      setMessage('Deleting task...')
+      api
+        .deleteTask(taskId)
         .then(() => navigate('/tasks'))
         .catch(() => setMessage('Could not delete task.'))
     }
@@ -44,7 +52,7 @@ export default function TaskPage()
   
     <h1>{task.title}</h1>
 
-    {message.length > 0 && <p>{message}</p>}
+    {message && <p>{message}</p>}
 
     <div className={`main-container ${styles.task}`}>
       
@@ -77,7 +85,7 @@ export default function TaskPage()
           <div className={styles.actions}>
             <button className="delete" onClick={handleDelete}>Delete</button>
 
-            <NavLink to={`/tasks/${task.id}/edit`}>Edit task</NavLink>
+            <NavLink to={`/tasks/${task._id}/edit`}>Edit task</NavLink>
           </div>
         </>
       }

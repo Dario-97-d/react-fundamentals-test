@@ -1,31 +1,34 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { API_URL, emptyTask } from '../constants'
-import axios from 'axios'
+import { api, emptyTask } from '../constants'
 import TaskInput from '../components/TaskInput'
 
 export default function EditTaskPage()
 {
   const { taskId } = useParams()
 
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('Loading task...')
   const [task, setTask] = useState(emptyTask())
   
   // Load Task to edit.
   useEffect(() => {
-    axios
-      .get(`${API_URL}/tasks/${taskId}`)
-      .then(response => setTask(response.data))
+    api
+      .getTask(taskId)
+      .then(response => {
+        setMessage('')
+        setTask(response.data)
+      })
       .catch(() => setMessage('Could not load task.'))
   }, [taskId])
 
   // Submit edited Task.
   const onSubmit = (task) => {
-    return axios
-      .put(`${API_URL}/tasks/${taskId}`, task)
+    setMessage('Updating task...')
+    return api
+      .editTask(taskId, task)
       .then((response) => {
         setMessage('The task has been updated!')
-        return response.data.id
+        return response.data._id
       })
       .catch(() => setMessage('Could not update task.'))
   }
@@ -34,7 +37,7 @@ export default function EditTaskPage()
 
     <h1>Edit Task</h1>
 
-    {message.length > 0 && <span>{message}</span>}
+    {message && <span>{message}</span>}
     
     <TaskInput mode="edit" initialValues={task} onSubmit={onSubmit} />
     
