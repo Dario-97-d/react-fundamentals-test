@@ -5,24 +5,32 @@ import TaskInput from '../components/TaskInput';
 export default function CreateTaskPage()
 {
   const [message, setMessage] = useState('')
+  const [preventLoadingAnimation, setPreventLoadingAnimation] = useState(false)
 
   // Submit new Task.
   const onSubmit = (task) => {
-    setMessage('Creating task...')
+    setPreventLoadingAnimation(false)
+    setMessage('Creating task')
+
     return api
       .createTask(task)
       .then((response) => {
+        setPreventLoadingAnimation(true)
         setMessage('The task has been created!')
+
         return response.data._id
       })
-      .catch(() => setMessage('Could not create task.'))
+      .catch(() => {
+        setPreventLoadingAnimation(true)
+        setMessage('Could not create task.')
+      })
   }
 
   return (<>
 
     <h1>New Task</h1>
 
-    {message.length > 0 && <span>{message}</span>}
+    {message && <span id="loading-message" className={preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</span>}
     
     <TaskInput mode="create" initialValues={emptyTask()} onSubmit={onSubmit} />
     

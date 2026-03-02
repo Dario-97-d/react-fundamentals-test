@@ -65,6 +65,24 @@ button.edit {
   background-color: darkblue;
 }
 
+span#loading-message::after {
+  content: "";
+  animation: loadingAnimation 4s infinite;
+}
+
+span#loading-message.prevent-loading-animation::after {
+  content: "";
+  animation: none;
+}
+
+@keyframes loadingAnimation {
+  0%   { content: ""; }
+  25%  { content: "."; }
+  50%  { content: ".."; }
+  75%  { content: "..."; }
+  100% { content: ""; }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

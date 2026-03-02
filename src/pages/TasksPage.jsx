@@ -5,7 +5,8 @@ import styles from './TasksPage.module.css'
 
 export default function TasksPage()
 {
-  const [message, setMessage] = useState('Loading tasks...')
+  const [message, setMessage] = useState('Loading tasks')
+  const [preventLoadingAnimation, setPreventLoadingAnimation] = useState(false)
   const [tasks, setTasks] = useState([])
 
   // Load Tasks.
@@ -16,14 +17,17 @@ export default function TasksPage()
         setMessage('')
         setTasks(response.data)
       })
-      .catch(() => setMessage('Could not load tasks.'))
+      .catch(() => {
+        setPreventLoadingAnimation(true)
+        setMessage('Could not load tasks.')
+      })
   }, [])
 
   return (<>
   
     <h1>All Tasks</h1>
 
-    {message && <p>{message}</p>}
+    {message && <p><span id="loading-message" className={preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</span></p>}
 
     <div className="main-container">
       {tasks.length > 0 &&

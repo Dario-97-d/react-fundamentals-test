@@ -7,7 +7,8 @@ export default function TaskPage()
 {
   const { taskId } = useParams()
 
-  const [message, setMessage] = useState('Loading task...')
+  const [message, setMessage] = useState('Loading task')
+  const [preventLoadingAnimation, setPreventLoadingAnimation] = useState(false)
   const [task, setTask] = useState(emptyTask())
 
   const navigate = useNavigate()
@@ -20,31 +21,46 @@ export default function TaskPage()
         setMessage('')
         setTask(response.data)
       })
-      .catch(() => setMessage('Could not load task.'))
+      .catch(() => {
+        setPreventLoadingAnimation(true)
+        setMessage('Could not load task.')
+      })
     
   }, [taskId])
 
   // Toggle task.done.
   const toggleDone = () => {
     const taskDoneLabel = task.done ? '"to be done"' : '"done"';
+    
+    setPreventLoadingAnimation(false)
     setMessage(`Setting task as: ${taskDoneLabel}`)
+    
     api
       .setTaskDone(taskId, !task.done)
       .then(response => {
         setMessage(`Task set as: ${taskDoneLabel}`)
+        setPreventLoadingAnimation(true)
         setTask(response.data)
       })
-      .catch(() => setMessage(`Could not mark task as: ${taskDoneLabel}.`))
+      .catch(() => {
+        setPreventLoadingAnimation(true)
+        setMessage(`Could not mark task as: ${taskDoneLabel}.`)
+      })
   }
 
   // Delete and Navigate.
   const handleDelete = () => {
     if (window.confirm('Delete task?')) {
-      setMessage('Deleting task...')
+      setPreventLoadingAnimation(false)
+      setMessage('Deleting task')
+      
       api
         .deleteTask(taskId)
         .then(() => navigate('/tasks'))
-        .catch(() => setMessage('Could not delete task.'))
+        .catch(() => {
+          setPreventLoadingAnimation(true)
+          setMessage('Could not delete task.')
+        })
     }
   }  
 
@@ -52,7 +68,7 @@ export default function TaskPage()
   
     <h1>{task.title}</h1>
 
-    {message && <p>{message}</p>}
+    {message && <p><span id="loading-message" className={preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</span></p>}
 
     <div className={`main-container ${styles.task}`}>
       
