@@ -1,22 +1,24 @@
-import { NavLink, Outlet } from 'react-router-dom'
-import './Layout.css';
+import { Outlet, useNavigate } from "react-router-dom"
+import "./Layout.css"
+import NavBar from "./NavBar"
 
-import NavBar from './NavBar';
+export default function Layout() {
+  const navigate = useNavigate()
 
-export default function Layout()
-{
   return (
     <div className="layout-container">
-      <header>
+      <header className="layout-header">
         <NavBar />
       </header>
-      
-      <main>
-        <Outlet />
+
+      <main className="layout-main">
+        <div className="page">
+          <Outlet />
+        </div>
       </main>
 
-      <footer>
-        <NavLink to={-1}>Back</NavLink>
+      <footer className="layout-footer">
+        <button onClick={() => navigate(-1)}>Back</button>
       </footer>
     </div>
   )

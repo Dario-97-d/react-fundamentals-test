@@ -3,8 +3,12 @@
   grid-template-columns: 1fr auto auto;
   color: #ccc;
   font-weight: bold;
+  text-align: center;
 }
 
+.grid a {
+  transition: background-color 0.2s ease-out;
+}
 .grid a:hover {
   background-color: rgba(255,255,255,0.1);
 }
@@ -25,7 +29,7 @@
   text-align: left;
 }
 .gridRowHeader div {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .title {

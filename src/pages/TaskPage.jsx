@@ -68,7 +68,7 @@ export default function TaskPage()
   
     <h1>{task.title}</h1>
 
-    {message && <p><span id="loading-message" className={preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</span></p>}
+    {message && <p id="loading-message" className={ preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</p>}
 
     <div className={`main-container ${styles.task}`}>
       

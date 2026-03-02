@@ -48,7 +48,7 @@ export default function EditTaskPage()
 
     <h1>Edit Task</h1>
 
-    {message && <span id="loading-message" className={preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</span>}
+    {message && <p id="loading-message" className={ preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</p>}
     
     <TaskInput mode="edit" initialValues={task} onSubmit={onSubmit} />
     

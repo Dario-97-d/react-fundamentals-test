@@ -29,10 +29,18 @@
 
 .setDone {
   background-color: rgba(127,255,127,0.25);
+  transition: background-color 0.2s ease-out;
+}
+.setDone:hover {
+  background-color: rgba(127,255,127,0.5);
 }
 
 .setNotDone {
   background-color: rgba(255,127,127,0.25);
+  transition: background-color 0.2s ease-out;
+}
+.setNotDone:hover {
+  background-color: rgba(255,127,127,0.5);
 }
 
 .actions {

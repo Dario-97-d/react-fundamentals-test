@@ -27,7 +27,7 @@ export default function TasksPage()
   
     <h1>All Tasks</h1>
 
-    {message && <p><span id="loading-message" className={preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</span></p>}
+    {message && <p id="loading-message" className={ preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</p>}
 
     <div className="main-container">
       {tasks.length > 0 &&

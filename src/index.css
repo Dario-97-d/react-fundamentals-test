@@ -20,10 +20,19 @@ html {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #111827;
+}
+
+h1 {
+  margin: 0 1rem 1.5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: left;
+  color: #f9fafb;
+  letter-spacing: -0.5px;
+  text-align: center;
 }
 
 a {
@@ -36,41 +45,48 @@ a:hover {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 0.5rem;
   border: 1px solid transparent;
-  padding: 0.5em 1em;
-  margin: 0.5rem;
-  width: fit-content;
-  font-size: 0.9em;
+  padding: 0.55rem 1rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  font-size: 0.9rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #374151;
+  color: #f9fafb;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-button.create {
-  background-color: darkgreen;
-}
-button.delete {
-  background-color: darkred;
-}
-button.edit {
-  background-color: darkblue;
+  transition: background-color 0.2s, transform 0.05s;
 }
 
-span#loading-message::after {
+button:hover {
+  background-color: #4b5563;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button.create {
+  background-color: #065f46;
+}
+
+button.delete {
+  background-color: #7f1d1d;
+}
+
+button.edit {
+  background-color: #1e40af;
+}
+
+p#loading-message {
+  text-align: center;
+}
+
+p#loading-message::after {
   content: "";
   animation: loadingAnimation 4s infinite;
 }
 
-span#loading-message.prevent-loading-animation::after {
+p#loading-message.prevent-loading-animation::after {
   content: "";
   animation: none;
 }
@@ -93,5 +109,8 @@ span#loading-message.prevent-loading-animation::after {
   }
   button {
     background-color: #f9f9f9;
+  }
+  h1 {
+    color: #111827;
   }
 }

@@ -1,13 +1,29 @@
 .layout-container {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-main {
-  flex: 1;
-  padding: 1rem;
+.layout-header {
+  border-bottom: 1px solid #374151;
+  padding: 1rem 1.5rem;
 }
 
-footer {
-  margin-bottom: 2rem;
+.layout-main {
+  flex: 1;
+  padding: 2rem 1.5rem;
+}
+
+.layout-footer {
+  border-top: 1px solid #374151;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+@media (prefers-color-scheme: light) {
+  .layout-header,
+  .layout-footer {
+    border-color: #e5e7eb;
+  }
 }

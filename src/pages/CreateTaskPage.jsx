@@ -30,7 +30,7 @@ export default function CreateTaskPage()
 
     <h1>New Task</h1>
 
-    {message && <span id="loading-message" className={preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</span>}
+    {message && <p id="loading-message" className={ preventLoadingAnimation ? 'prevent-loading-animation' : '' }>{message}</p>}
     
     <TaskInput mode="create" initialValues={emptyTask()} onSubmit={onSubmit} />
     
