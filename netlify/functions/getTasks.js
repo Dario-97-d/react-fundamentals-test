@@ -1,9 +1,12 @@
-import { restdbFetch } from './utils/restdb.js';
+import { restdbFetch } from './utils/restdb'
+import { ensureSeedData } from './utils/seedTasks'
 
 export async function handler() {
   try {
-    const response = await restdbFetch('/tasks');
-    const data = await response.json()
+    const response = await restdbFetch('/tasks')
+    let data = await response.json()
+    
+    data = await ensureSeedData(data)
 
     return {
       statusCode: 200,

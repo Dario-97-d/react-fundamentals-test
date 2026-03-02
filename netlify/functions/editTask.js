@@ -1,6 +1,5 @@
 import { restdbFetch } from "./utils/restdb";
-
-const allowedPriorities = ['low', 'medium', 'high']
+import { validateTask } from "./utils/validator";
 
 export async function handler(event) {
   if (event.httpMethod !== 'PUT') {
@@ -16,34 +15,35 @@ export async function handler(event) {
     }
   }
 
-  const body = JSON.parse(event.body)
-  const { title, description, priority, done } = body
-
-  if (priority && !allowedPriorities.includes(priority)) {
+  let body
+  try {
+    body = JSON.parse(event.body)
+  } catch {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Invalid priority.' })
+      body: JSON.stringify({ error: "Invalid JSON body." })
     }
   }
 
-  if (done !== undefined && typeof done !== 'boolean') {
+  const { valid, errors, data } = validateTask(body)
+  if (!valid) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: `The parameter done must be a boolean, ${typeof done} given.` })
+      body: JSON.stringify({ errors })
     }
   }
 
   try {
     const response = await restdbFetch(`/tasks/${id}`, {
       method: 'PUT',
-      body: JSON.stringify({ title, description, priority, done })
-    });
+      body: JSON.stringify(data)
+    })
 
-    const data = await response.json()
+    const result = await response.json()
 
     return {
       statusCode: 200,
-      body: JSON.stringify(data)
+      body: JSON.stringify(result)
     }
   } catch {
     return {
