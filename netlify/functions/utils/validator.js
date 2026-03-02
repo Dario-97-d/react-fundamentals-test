@@ -43,6 +43,9 @@ export function validateTask(input) {
     data.done = input.done
   }
 
+  // Set lastUserChange.
+  data.lastUserChange = (new Date()).toISOString()
+
   return {
     valid: errors.length === 0,
     errors,

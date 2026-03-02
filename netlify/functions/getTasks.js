@@ -1,4 +1,5 @@
 import { restdbFetch } from './utils/restdb'
+import { deleteIfExpired } from './utils/dataReset'
 import { ensureSeedData } from './utils/seedTasks'
 
 export async function handler() {
@@ -6,6 +7,7 @@ export async function handler() {
     const response = await restdbFetch('/tasks')
     let data = await response.json()
     
+    data = await deleteIfExpired(data)
     data = await ensureSeedData(data)
 
     return {
