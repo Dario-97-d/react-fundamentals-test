@@ -50,6 +50,10 @@ A single-page app for task management built with React + Vite. It allows users t
 
 ## 📸 Screenshots
 
+### New Design
+
+![New Design](./app-screenshots/new-design.png)
+
 ### Listing all tasks
 
 ![All Tasks](./app-screenshots/all-tasks.png)
