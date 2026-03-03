@@ -1,5 +1,7 @@
 import { restdbFetch } from "./restdb"
-import SEED_TASKS from "./tasksToSeed.js"
+import seedModule from "./tasksToSeed.js"
+
+const SEED_TASKS = seedModule.default ?? seedModule
 
 export async function ensureSeedData(existingTasks) {
   // Return existing tasks if any.
