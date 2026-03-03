@@ -11,7 +11,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to={"/tasks"} replace/>}></Route>
+        <Route path="*" element={<Navigate to={"/tasks"} replace/>}></Route>
         
         <Route element={<Layout />}>
           <Route path="/tasks" element={<TasksPage />}></Route>
