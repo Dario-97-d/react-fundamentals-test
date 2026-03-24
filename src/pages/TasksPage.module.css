@@ -55,23 +55,53 @@
 @media (max-width: 50rem) {
   .grid {
     grid-template-columns: 1fr;
-    gap: 0.25rem;
+    gap: 1rem;
+    text-align: left;
   }
-  
+
   .gridRow {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem;
-    border: 0.1em solid whitesmoke;
+    padding: 0.85rem;
+    border: 0.15rem solid #ccc;
+    border-radius: 1rem;
   }
-  
+
   .gridRow > div {
     padding: 0;
   }
-  
-  .gridRow > .title {
+
+  .title > span {
     text-decoration: underline;
+    text-underline-offset: 0.1em;
+  }
+
+  .title::before {
+    content: "Task: ";
+    color: #aaa;
+  }
+
+  .priority::before {
+    content: "Priority: ";
+    color: #aaa;
+  }
+
+  .done {
+    align-self: end;
+  }
+
+  .done[data-value="true"]::before {
+    content: "done ";
+    color: rgba(127,255,127,0.5);
+  }
+
+  .done[data-value="false"]::before {
+    content: "to be done ";
+    color: rgba(255,127,127,0.5);
+  }
+
+  .gridRowHeader {
+    display: none;
   }
 }

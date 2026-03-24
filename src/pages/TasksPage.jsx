@@ -42,14 +42,16 @@ export default function TasksPage()
             <NavLink key={t._id} to={`/tasks/${t._id}`} className={styles.gridRow}>
               
               <div className={styles.title}>
-                {t.title}
+                <span>{t.title}</span>
               </div>
               
-              <div className={priorityClasses[t.priority]}>
-                {t.priority}
+              <div className={`${styles.priority} ${priorityClasses[t.priority]}`}>
+                <span>{t.priority}</span>
               </div>
 
-              <div>{t.done ? '✅' : '⭕'}</div>
+              <div data-value={t.done} className={`${styles.done}`}>
+                <span>{t.done ? '✅' : '⭕'}</span>
+              </div>
 
             </NavLink>
               

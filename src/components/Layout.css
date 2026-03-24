@@ -27,3 +27,9 @@
     border-color: #e5e7eb;
   }
 }
+
+@media (max-width: 50rem) {
+  .layout-main {
+    padding: 0;
+  }
+}
