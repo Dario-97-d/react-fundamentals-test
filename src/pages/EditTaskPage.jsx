@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { api, emptyTask } from '../constants'
+import api from '../utils/api';
+import { emptyTask } from '../utils/utils'
 import TaskInput from '../components/TaskInput'
 
 export default function EditTaskPage()

@@ -6,7 +6,7 @@ const axiosApi = axios.create({
   baseURL: API_URL
 });
 
-export const api = {
+const api = {
   getTask: (id) => axiosApi.get(`/getTask?id=${id}`),
   getTasks: () => axiosApi.get('/getTasks'),
   createTask: (task) => axiosApi.post('/createTask', task),
@@ -15,17 +15,4 @@ export const api = {
   deleteTask: (id) => axiosApi.delete(`/deleteTask?id=${id}`)
 }
 
-export const emptyTask = () => {
-  return {
-    title: '',
-    description: '',
-    priority: '',
-    done: false
-  }
-}
-
-export const priorityClasses = {
-  low: 'priorityLow',
-  medium: 'priorityMedium',
-  high: 'priorityHigh',
-}
+export default api;

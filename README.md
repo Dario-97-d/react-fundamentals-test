@@ -24,9 +24,9 @@ A single-page app for task management built with React + Vite. It allows users t
 ├── src/                  # Application source code
 │   ├── components/       # Reusable UI components
 │   ├── pages/            # Page views for routing
+│   ├── utils/            # Utilities (api and constants)
 │   ├── App.css           # Styles for the App
 │   ├── App.jsx           # Main app component
-│   ├── constants.js      # Constants for the app (eg: API_URL)
 │   ├── index.css         # Global Styles
 │   └── main.jsx          # App entry point
 ├── index.html            # HTML template

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import { api, priorityClasses } from '../constants'
+import api from '../utils/api';
+import { priorityClasses } from '../utils/utils'
 import styles from './TasksPage.module.css'
 
 export default function TasksPage()
