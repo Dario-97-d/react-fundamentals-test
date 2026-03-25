@@ -1,39 +1,30 @@
-# 📋 Task Manager – React SPA
+# 📋 Task CRUD – React SPA
 
-A single-page app for task management built with React + Vite. It allows users to list, create, edit, delete, and mark tasks as completed. The app communicates with a REST API backend and is built using modern React patterns with reusable components and clean state management.
+A single-page app for task management built with React + Vite. It allows users to list, create, edit, delete, and mark tasks as completed. The app communicates with a REST API backend.
+
+This app was initially made as the final project of a 25-hour React Fundamentals course, using a local json-server instance. After the course ended, I updated it to use Netlify functions to securely access a NoSQL database on restdb.io.
+
+## Live Demo
+
+https://react-test-dario-97-d.netlify.app/
 
 ---
 
 ## ✨ Features
 
-- View all tasks in a list view  
-- Create new tasks (title required, description and priority optional)  
-- Edit existing tasks  
-- Mark tasks as completed or uncompleted  
-- Delete tasks with confirmation  
-- Data persistence through a RESTful API (local or remote)  
-- Built with reusable components and clean React architecture
+- List Tasks
+- Create and Edit Task
+- Mark Task as 'done' or 'to be done'
+- Delete Task with confirmation
 
 ---
 
-## 🗂 Project Structure
+## 💡 Implementation Notes
 
-```
-├── netlify/              # Netlify functions
-├── public/               # Static assets (website tab icon file)
-├── src/                  # Application source code
-│   ├── components/       # Reusable UI components
-│   ├── pages/            # Page views for routing
-│   ├── utils/            # Utilities (api and constants)
-│   ├── App.css           # Styles for the App
-│   ├── App.jsx           # Main app component
-│   ├── index.css         # Global Styles
-│   └── main.jsx          # App entry point
-├── index.html            # HTML template
-├── package.json          # Project metadata and scripts
-├── vite.config.js        # Vite configuration
-└── README.md             # Project documentation
-```
+- Responsive layout (Grid and Flexbox)
+- Data persistence (cloud NoSQL database)
+- Secure database access, using Netlify functions as a proxy to hide the API key
+- User feedback via inline status messages and navigation to updated tasks
 
 ---
 
@@ -44,48 +35,44 @@ A single-page app for task management built with React + Vite. It allows users t
 - [React Router DOM](https://reactrouter.com/en/main) – Client-side routing
 - [Axios](https://axios-http.com/) – HTTP client for API requests
 - [Netlify](https://www.netlify.com/) – Free frontend hosting with functions for secure db access
-- **Pure CSS** – No CSS frameworks used
+- [restdb.io](https://restdb.io/) - NoSQL database host with RESTful API
 
 ---
+
+## 🗂 Project Structure
+
+```
+├── netlify/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── utils/
+│   │
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
 
 ## 📸 Screenshots
 
-### New Design
+### List Tasks
 
-![New Design](./app-screenshots/new-design.png)
+![List Tasks](./app-screenshots/list-tasks-922x922.png)
 
-### Listing all tasks
+### Task View (just marked as 'to be done')
 
-![All Tasks](./app-screenshots/all-tasks.png)
+![Task View](./app-screenshots/task-view-set-to-be-done-922x922.png)
 
-### Viewing task and marking it as done
+### Task Updated
 
-![Task View](./app-screenshots/task-mark-done.png)
+![Task Updated](./app-screenshots/task-updated-922x922.png)
 
-### Task is marked as done ✅
+### List Tasks Mobile
 
-![Task Done](./app-screenshots/task-marked-done.png)
-
-### Editing task
-
-![Edit Task](./app-screenshots/edit-task.png)
-
-### The task has been edited!
-
-A link to view the task is given beside the submit button.
-
-![Edit Task](./app-screenshots/edited-task.png)
-
-### Creating task
-
-![Create Task](./app-screenshots/create-task.png)
-
-### The task has been created!
-
-![Created Task](./app-screenshots/created-task.png)
-
----
-
-## 📬 Contributions
-
-This project is intended for learning purposes. Feel free to fork or adapt it.
+![List Tasks Mobile](./app-screenshots/list-tasks-mobile-518x922.png)
