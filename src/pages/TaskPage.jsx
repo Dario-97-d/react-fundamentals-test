@@ -88,14 +88,12 @@ export default function TaskPage()
           }
 
           <div className={styles.toggleDoneContainer}>
-            <span>Mark as:</span>
-            
             <button
               className={task.done ? styles.setNotDone : styles.setDone}
               onClick={toggleDone}
               aria-pressed={task.done}
             >
-              {task.done ? '⭕ To be done' : '✅ Done'}
+              <span>Mark as:</span> {task.done ? 'to be done' : 'done'}
             </button>
           </div>
           
